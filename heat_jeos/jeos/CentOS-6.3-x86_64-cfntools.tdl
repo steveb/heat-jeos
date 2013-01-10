@@ -5,7 +5,7 @@
     <version>3</version>
     <arch>x86_64</arch>
     <install type='iso'>
-      <iso>file:/var/lib/libvirt/images/CentOS-6.3-x86_64-bin-DVD1.iso</iso>
+      <iso>http://ftp.linux.ncsu.edu/pub/CentOS/6.3/isos/x86_64/CentOS-6.3-x86_64-bin-DVD1.iso</iso>
     </install>
   </os>
   <description>CentOS 6.3</description>

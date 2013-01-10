@@ -5,7 +5,7 @@
     <version>16</version>
     <arch>i386</arch>
     <install type='iso'>
-      <iso>file:/var/lib/libvirt/images/Fedora-16-i386-DVD.iso</iso>
+      <iso>http://download.fedoraproject.org/pub/fedora/linux/releases/16/Fedora/i386/iso/Fedora-16-i386-DVD.iso</iso>
     </install>
   </os>
   <description>Fedora 16</description>
