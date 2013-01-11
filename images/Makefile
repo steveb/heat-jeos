@@ -29,8 +29,7 @@ check-dir:
 ALL_QCOW2 := $(patsubst %,%.qcow2,$(ALL_TDLS))
 heat-jeos: $(ALL_QCOW2)
 $(ALL_QCOW2): check-dir
-	touch $@
-	#heat-jeos -dy create $(subst .qcow2,,$@)
+	heat-jeos -dy create $(subst .qcow2,,$@)
 
 CLEAN_QCOW2 := $(patsubst %,clean-%,$(ALL_TDLS))
 clean: $(CLEAN_QCOW2) check-dir
