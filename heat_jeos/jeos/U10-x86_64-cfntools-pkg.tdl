@@ -11,7 +11,7 @@
   <description>Ubuntu 10.04</description>
   <repositories>
     <repository name='fedora-heat-trunk'>
-      <url>http://ppa.launchpad.net/steve-stevebaker/heat-cfntools/ubuntu</url>
+      <url>ppa:steve-stevebaker/heat-cfntools</url>
     </repository>
   </repositories>
   <packages>
