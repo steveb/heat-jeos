@@ -15,7 +15,7 @@
     </repository>
   </repositories>
   <packages>
-    <package name="python-argparser"/>
+    <package name="python-argparse"/>
     <package name="chkconfig"/>
     <package name="cloud-init"/>
     <package name="heat-cfntools"/>
