@@ -14,18 +14,26 @@
       <url>ppa:steve-stevebaker/heat-cfntools</url>
     </repository>
   </repositories>
-  <packages>
-    <package name="python-argparse"/>
-    <package name="chkconfig"/>
-    <package name="cloud-init"/>
-    <package name="heat-cfntools"/>
-  </packages>
   <commands>
     <command name='commands'>
-apt-get -y update;
-apt-get -y upgrade;
-/usr/sbin/useradd -m ec2-user;
-echo -e 'ec2-user\tALL=(ALL)\tNOPASSWD: ALL' >> /etc/sudoers;
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install python-argparse
+apt-get -y install chkconfig
+
+echo "cloud-init cloud-init/datasources string NoCloud, OVF, Ec2" > /tmp/debconf-selections
+/usr/bin/debconf-set-selections /tmp/debconf-selections
+rm -f /tmp/debconf-selections
+apt-get -y install cloud-init
+apt-get -y install heat-cfntools
+apt-get clean
+
+/usr/sbin/useradd -m ec2-user
+echo -e 'ec2-user\tALL=(ALL)\tNOPASSWD: ALL' >> /etc/sudoers
+
+echo -n > /etc/udev/rules.d/70-persistent-net.rules
+echo -n > /lib/udev/rules.d/75-persistent-net-generator.rules
+
     </command>
   </commands>
 </template>
