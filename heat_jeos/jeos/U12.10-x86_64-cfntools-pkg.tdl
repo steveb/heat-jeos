@@ -1,0 +1,30 @@
+<template>
+  <name>U12.10-x86_64-cfntools-pkg</name>
+  <os>
+    <name>Ubuntu</name>
+    <version>12.10</version>
+    <arch>x86_64</arch>
+    <install type='iso'>
+      <iso>http://releases.ubuntu.com/quantal/ubuntu-12.10-server-amd64.iso</iso>
+    </install>
+  </os>
+  <description>Ubuntu 12.10</description>
+  <repositories>
+    <repository name='fedora-heat-trunk'>
+      <url>ppa:steve-stevebaker/heat-cfntools</url>
+    </repository>
+  </repositories>
+  <packages>
+    <package name="chkconfig"/>
+    <package name="cloud-init"/>
+    <package name="heat-cfntools"/>
+  </packages>
+  <commands>
+    <command name='commands'>
+apt-get -y update;
+apt-get -y upgrade;
+/usr/sbin/useradd -m ec2-user;
+echo -e 'ec2-user\tALL=(ALL)\tNOPASSWD: ALL' >> /etc/sudoers;
+    </command>
+  </commands>
+</template>
