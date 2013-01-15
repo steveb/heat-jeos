@@ -1,5 +1,5 @@
 <template>
-  <name>F17-x86_64-cfntools</name>
+  <name>F17-x86_64-cfntools-pkg</name>
   <os>
     <name>Fedora</name>
     <version>17</version>
@@ -9,24 +9,26 @@
     </install>
   </os>
   <description>Fedora 17</description>
+  <repositories>
+    <repository name='fedora-heat-trunk'>
+      <url>http://repos.fedorapeople.org/repos/heat/heat-trunk/fedora-17/$basearch/</url>
+    </repository>
+  </repositories>
+  <packages>
+    <package name="yum-plugin-fastestmirror"/>
+    <package name="cloud-init"/>
+    <package name="python-psutil"/>
+    <package name="heat-cfntools"/>
+  </packages>
   <commands>
     <command name='user'>
 /usr/sbin/useradd ec2-user
 echo -e 'ec2-user\tALL=(ALL)\tNOPASSWD: ALL' >> /etc/sudoers
     </command>
     <command name='packages'>
-yum -y update fedora-release
-yum -y install yum-plugin-fastestmirror cloud-init python-psutil heat-cfntools
 yum -y update
 sed --in-place -e s/Type=oneshot/"Type=oneshot\nTimeoutSec=0"/ /lib/systemd/system/cloud-final.service
     </command>
-    <command name='cfn-perms'>
-chmod +x /opt/aws/bin/cfn-*
-    </command>
   </commands>
-  <repositories>
-    <repository name="fedora-heat-trunk">
-      <url>http://repos.fedorapeople.org/repos/heat/heat-trunk/fedora-17/x86_64</url>
-    </repository>
-  </repositories>
+
 </template>
