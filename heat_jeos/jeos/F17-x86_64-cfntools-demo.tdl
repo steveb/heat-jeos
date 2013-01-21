@@ -15,13 +15,14 @@
     </repository>
   </repositories>
   <packages>
-    <package name="yum-plugin-fastestmirror"/>
     <package name="cloud-init"/>
+    <package name="git"/>
     <package name="python-psutil"/>
     <package name="heat-cfntools"/>
     <package name="mysql"/>
     <package name="mysql-server"/>
     <package name="httpd"/>
+    <package name="php"/>
     <package name="php-cli"/>
     <package name="php-cloudfiles"/>
     <package name="php-common"/>
@@ -39,8 +40,11 @@
 echo -e 'ec2-user\tALL=(ALL)\tNOPASSWD: ALL' >> /etc/sudoers
     </command>
     <command name='packages'>
-wget https://nodeload.github.com/wikimedia/mediawiki-extensions-SwiftCloudFiles/legacy.tar.gz/REL1_20
+mkdir -p files
+pushd files
 wget http://download.wikimedia.org/mediawiki/1.20/mediawiki-1.20.2.tar.gz
+git clone git://github.com/steveb/SwiftCloudFiles.git
+popd
 
 yum -y update
 sed --in-place -e s/Type=oneshot/"Type=oneshot\nTimeoutSec=0"/ /lib/systemd/system/cloud-final.service
